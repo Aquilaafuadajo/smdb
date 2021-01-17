@@ -9,7 +9,7 @@ function App() {
   const [mobileSidebar, toggleMobileSidebar] = useState(false);
   const [movies, setMovies] = useState([]);
   const [nominations, setNominations] = useState([]);
-  const [wordToSearch, setWordToSearch] = useState("bridge");
+  const [wordToSearch, setWordToSearch] = useState("beautiful");
   const [limit, setLimit] = useState(5);
 
   useEffect(() => {
@@ -66,12 +66,6 @@ function App() {
 
     // update local storage limit
     localStorage.setItem("nominationLimit", limit - 1);
-
-    nominations.length === 5 &&
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
   };
 
   const undoNomination = (movie) => {
@@ -92,6 +86,12 @@ function App() {
     // update local storage limit
     localStorage.setItem("nominationLimit", limit + 1);
   };
+
+  nominations.length === 5 &&
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
 
   return (
     <div className='App' id={mobileSidebar ? "no-scroll" : ""}>
@@ -142,13 +142,10 @@ function App() {
             }`}
           >
             <h3 className='nominations__heading'>Your Nominations</h3>
-            {/* <p className='nominations__limit'>
-              You have <strong>{limit} Nominations</strong> Remaining
-            </p> */}
 
             {nominations.length === 0 && (
               <div className='nominations__empty'>
-                <i className='fas fa-ghost'></i>
+                <i className="fas fa-folder-open"></i>
                 <p>Empty!</p>
               </div>
             )}
