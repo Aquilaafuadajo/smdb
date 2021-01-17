@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./assets/scss/App.scss";
+import Header from "./components/header/Header";
 
 function App() {
+  const [wordToSearch, setSwordToSearch] = useState("bridge");
+  const [isMobile, toggleIsMobile] = useState(false);
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+
+    console.log(e.target.value)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App' id={isMobile ? "no-scroll" : ""}>
+      <Header
+        isMobile={isMobile}
+        toggleIsMobile={toggleIsMobile}
+        wordToSearch={wordToSearch}
+        handleSearch={handleSearch}
+      />
     </div>
   );
 }
