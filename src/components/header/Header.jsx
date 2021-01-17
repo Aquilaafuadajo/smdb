@@ -3,7 +3,10 @@ import "./Header.scss";
 
 import Search from '../search/Search'
 
-function Header({ wordToSearch, handleSearch }) {
+function Header({ mobileSidebar, toggleMobileSidebar, limit, wordToSearch, handleSearch }) {
+  const handleToggle = () => {
+    toggleMobileSidebar(!mobileSidebar);
+  };
 
   return (
     <header>
@@ -21,6 +24,16 @@ function Header({ wordToSearch, handleSearch }) {
       </a>
 
       <Search className='header-search' wordToSearch={wordToSearch} handleSearch={handleSearch} />
+
+      <nav className='sidebar__toggle' role="navigation">
+        <button
+          className='sidebar__toggle__button'
+          onClick={handleToggle}
+        >
+          <span> {Math.abs(limit - 5)}/5 </span>
+          <i className="fas fa-vote-yea"></i>
+        </button>
+      </nav>
     </header>
   );
 }

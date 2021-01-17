@@ -24,6 +24,25 @@ function MovieCard({ movieData, nominateMovie, nominations, limit }) {
 
   return (
     <article className='movie-card'>
+      <div class="content-overlay"></div>
+      <div class="content-details fadeIn-bottom">
+      <button
+        aria-label='Nominate movie'
+        disabled={checkNominationStatus()}
+        className={getButtonClass()}
+        onClick={() => nominateMovie(movieData)}
+      >
+        {checkNominationStatus() ? (
+          <React.Fragment>
+            Nominated <i className='far fa-check-circle'></i>
+          </React.Fragment>
+        ) : limit === 0 ? (
+          <React.Fragment>Limit Reached</React.Fragment>
+        ) : (
+          <React.Fragment>Nominate</React.Fragment>
+        )}
+      </button>
+      </div>
       <div className='movie-card__image'>
         <img
           src={
@@ -39,22 +58,6 @@ function MovieCard({ movieData, nominateMovie, nominations, limit }) {
         <p className='movie-card__details__release-year'>
           <span>Released:</span> <em>{movieData.Year} </em>
         </p>
-        <button
-          aria-label='Nominate movie'
-          disabled={checkNominationStatus()}
-          className={getButtonClass()}
-          onClick={() => nominateMovie(movieData)}
-        >
-          {checkNominationStatus() ? (
-            <React.Fragment>
-              Nominated <i className='far fa-check-circle'></i>
-            </React.Fragment>
-          ) : limit === 0 ? (
-            <React.Fragment>Limit Reached</React.Fragment>
-          ) : (
-            <React.Fragment>Nominate</React.Fragment>
-          )}
-        </button>
       </div>
     </article>
   );
