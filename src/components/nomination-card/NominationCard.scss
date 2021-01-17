@@ -1,0 +1,31 @@
+@import "../../assets/scss/variables.scss";
+
+.nomination-card {
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+
+  .movie-card__image {
+    width: 30%;
+  }
+
+  .movie-card__details {
+    width: 68%;
+
+    &__title {
+      margin-top: 0;
+    }
+  }
+
+  .nominate-button {
+    background-color: transparent;
+    border: 1px solid $primary;
+
+    &:hover {
+      border-color: $red;
+      transition: all 0.1s linear;
+    }
+  }
+}
