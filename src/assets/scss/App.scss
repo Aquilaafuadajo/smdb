@@ -40,4 +40,154 @@ body {
   flex-grow: 1;
 }
 
+.main-wrapper__inner {
+  display: flex;
+  justify-content: space-between;
 
+  .banner {
+    display: flex;
+    align-items: center;
+    background: darken($color: $primary, $amount: 10);
+    color: $white;
+    padding: 0.5rem 1rem;
+    margin: 2rem 0;
+    font-weight: 200;
+
+
+    i {
+      margin-right: 0.5rem;
+      color: $white;
+      font-size: 1.25rem;
+    }
+  }
+
+  main {
+    width: 100%;
+    padding: 1rem 4%;
+
+    @media screen and (min-width: 768px) {
+      flex-grow: 1;
+    }
+
+    form {
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      box-sizing: border-box;
+      border: 1px solid $outlinemedium;
+    }
+
+    i {
+      color: #adadad;
+      margin-right: 1rem;
+    }
+
+    input {
+      flex-grow: 1;
+      height: 100%;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: $white;
+      font-size: 16px;
+    }
+
+    .stats {
+      margin-bottom: 2rem;
+  
+      span {
+        color: $primary;
+      }
+    }
+  
+    .movies__listing {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+
+  
+
+  aside {
+    position: fixed;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    left: 0;
+    background-color: $white;
+    width: 100%;
+    min-height: 100%;
+    padding: 1rem 4% 10rem;
+    transform: translateX(101vw);
+    box-sizing: border-box;
+
+    @media screen and (min-width: 768px) {
+      width: 40%;
+      position: static;
+      height: auto;
+    }
+
+    .nominations__heading {
+      margin-bottom: 2rem;
+    }
+
+    .nominations__limit {
+      margin-bottom: 2rem;
+      color: lighten($color: $outlinemedium, $amount: 60);
+
+      strong {
+        color: $primary;
+      }
+    }
+
+    .nominations__empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4rem;
+
+      i {
+        font-size: 10rem;
+        opacity: 0.5;
+        color: lighten($color: $outlinedark, $amount: 20);
+      }
+
+      p {
+        color: lighten($color: $outlinedark, $amount: 20);
+        text-align: center;
+      }
+    }
+  }
+
+  aside.show-sidebar {
+    transform: translateX(0);
+    transition: all 0.5s linear;
+
+    @media screen and (min-width: 768px) {
+      transform: translateX(0);
+      width: 40%;
+      background: transparent;
+      transition: width 0.2s linear;
+
+      transition: none;
+    }
+  }
+
+  aside.hide-sidebar {
+    transform: translateX(101vw);
+    transition: transform 0.5s linear;
+
+    @media screen and (min-width: 768px) {
+      transform: translateX(0);
+      background-color: transparent;
+
+      transition: none;
+    }
+  }
+
+}
