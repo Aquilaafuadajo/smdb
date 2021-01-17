@@ -9,23 +9,23 @@ function App() {
   const [mobileSidebar, toggleMobileSidebar] = useState(false);
   const [movies, setMovies] = useState([]);
   const [nominations, setNominations] = useState([]);
-  const [wordToSearch, setWordToSearch] = useState("beautiful");
+  const [wordToSearch, setWordToSearch] = useState("");
   const [limit, setLimit] = useState(5);
 
   useEffect(() => {
     fetch(
-      `https://www.omdbapi.com/?s=${wordToSearch}&page=1-10&apikey=dee16f2c`
+      `https://www.omdbapi.com/?s=${wordToSearch || 'brave'}&page=1-10&apikey=dee16f2c`
     )
       .then((res) => res.json())
       .then((data) => setMovies(data.Search || []));
 
-    const storedNominations = localStorage.getItem("shoppiesNominations");
+    const storedNominations = localStorage.getItem("movieNominations");
 
     // fetch nominations from local storage
     storedNominations !== null
       ? setNominations(JSON.parse(storedNominations))
       : localStorage.setItem(
-          "shoppiesNominations",
+          "movieNominations",
           JSON.stringify(nominations)
         );
 
@@ -59,7 +59,7 @@ function App() {
     setNominations(newMoviesArray);
 
     // add movie to loacalstorage
-    localStorage.setItem("shoppiesNominations", JSON.stringify(newMoviesArray));
+    localStorage.setItem("movieNominations", JSON.stringify(newMoviesArray));
 
     // update limit
     setLimit(limit - 1);
@@ -76,7 +76,7 @@ function App() {
     // update local storage
     setNominations(currentNominations);
     localStorage.setItem(
-      "shoppiesNominations",
+      "movieNominations",
       JSON.stringify(currentNominations)
     );
 

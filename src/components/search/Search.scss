@@ -4,6 +4,8 @@ form.mobile-search {
   display: none;
   width: 80%;
   margin: .3rem auto;
+  border-radius: 0;
+  border-bottom: 1px solid $outlinemedium;
 
   @media screen and (max-width: 768px) {
     display: block;
